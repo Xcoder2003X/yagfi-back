@@ -21,4 +21,5 @@ public class GithubIssueDto {
     private OffsetDateTime updatedAt;
     private GithubRepositoryDto repository;
     private GithubLabelsDto labels;
+    private String bodyText;
 }

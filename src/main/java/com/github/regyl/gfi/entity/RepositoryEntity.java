@@ -3,8 +3,6 @@ package com.github.regyl.gfi.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -14,17 +12,15 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import java.time.OffsetDateTime;
-
 @Data
 @Entity
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "e_issue")
+@Table(name = "e_repository")
 @EqualsAndHashCode(callSuper = true)
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
-public class IssueEntity extends AbstractEntity {
+public class RepositoryEntity extends AbstractEntity {
 
     @NotNull
     @Column(unique = true)
@@ -33,14 +29,11 @@ public class IssueEntity extends AbstractEntity {
     @NotEmpty
     private String title;
 
-    @NotEmpty
     private String url;
 
-    private String text;
+    private Integer stars;
 
-    private OffsetDateTime updatedAt;
+    private String description;
 
-    @ManyToOne
-    private RepositoryEntity repository;
-
+    private String language;
 }

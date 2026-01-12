@@ -1,4 +1,4 @@
-package com.github.regyl.gfi.configuration;
+package com.github.regyl.gfi.configuration.github;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +16,8 @@ public class GraphQlClientFactory {
     public GraphQlClient githubClient(GithubConfigurationProperties configProps) {
         String authHeaderValue = String.format("Bearer %s", configProps.getToken());
         RestClient restClient = RestClient.create("https://api.github.com/graphql");
-        return HttpSyncGraphQlClient.create(restClient).mutate()
+        return HttpSyncGraphQlClient.create(restClient)
+                .mutate()
                 .header("Authorization", authHeaderValue)
                 .build();
     }
