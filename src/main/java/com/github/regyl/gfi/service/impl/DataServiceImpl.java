@@ -71,4 +71,9 @@ public class DataServiceImpl implements DataService {
         Collection<IssueResponseDto> issues = dataRepository.findAllIssues(requestDto);
         return new DataResponseDto(issues);
     }
+
+    @Override
+    public Set<String> findAllLanguages() {
+        return dataRepository.findAllLanguages();
+    }
 }

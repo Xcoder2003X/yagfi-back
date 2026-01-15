@@ -69,4 +69,7 @@
         LIMIT #{limit} OFFSET #{offset}
     </select>
 
+    <select id="findAllLanguages" resultType="java.lang.String">
+        select distinct language from gfi.repository_v order by language desc --nulls last
+    </select>
 </mapper>

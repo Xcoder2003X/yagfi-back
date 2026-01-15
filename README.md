@@ -36,7 +36,7 @@ To compare with, look for other similar projects:
 ## Implementation
 - Data updates every 12 minutes since GitHub rate limit allows no more
 - The list of current supported issues is [here](https://github.com/Regyl/yagfi-back/blob/master/src/main/resources/data/labels.txt)
-  - See [CONTRIBUTING](https://github.com/Regyl/yagfi-back/tree/master/docs/CONTRUBUTING.md) if you found some unsupported lables
+  - See [CONTRIBUTING](https://github.com/Regyl/yagfi-back/tree/master/docs/CONTRUBUTING.md) if you found some unsupported labels
 
 ## Need fix
 - Supply each new query as task to task executor to reuse threads
