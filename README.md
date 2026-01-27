@@ -14,6 +14,7 @@ YAGFI - yet another good first issue
 <div align="center">
   <a href="https://discord.gg/evCSycGd"><img src="https://img.shields.io/discord/1465432673164984567" alt="Discord"></a>
 </div>
+
 Website: [yagfi.com](http://yagfi.com)
 
 ## Why yet another good-first-issue project?
