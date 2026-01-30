@@ -82,7 +82,7 @@ public class DataServiceImpl implements DataService {
 
     @Override
     public String findRandomIssueUrl(DataRequestDto filters) {
-        String link = issueRepository.findRandomIssueLink(filters);
+        String link = dataRepository.findRandomIssueLink(filters);
 
         if (link == null) {
             throw new IssueNotFoundException("Random issue link not found!");

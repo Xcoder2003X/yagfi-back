@@ -59,3 +59,16 @@ CREATE TABLE IF NOT EXISTS e_issue_2
 
 CREATE VIEW issue_v as select * from e_issue_1;
 CREATE VIEW repository_v as select * from e_repository_1;
+
+CREATE TABLE IF NOT EXISTS gfi.e_log
+(
+    id             BIGSERIAL PRIMARY KEY,
+    created        TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    url            TEXT                     NOT NULL,
+    http_method    VARCHAR(10)              NOT NULL,
+    request_body   JSONB,
+    country        VARCHAR(2),
+    os             VARCHAR(50),
+    browser_family VARCHAR(50),
+    device_type    VARCHAR(20)
+);
