@@ -7,8 +7,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum IssueSources {
 
-    GITHUB("github"),
-    GITLAB("gitlab"),
+    GITHUB("GitHub"),
+    GITLAB("GitLab"),
 
     ;
 

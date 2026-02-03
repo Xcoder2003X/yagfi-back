@@ -17,7 +17,6 @@ import com.github.regyl.gfi.service.other.DataService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
@@ -40,7 +39,6 @@ public class DataServiceImpl implements DataService {
     private final Function<GithubRepositoryDto, RepositoryEntity> repoMapper;
     private final DataRepository dataRepository;
 
-    @Async
     @Override
     public void save(IssueDataDto response, IssueTables table) {
         if (response == null || response.getSearch() == null || CollectionUtils.isEmpty(response.getSearch().getNodes())) {

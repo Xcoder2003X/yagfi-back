@@ -20,7 +20,6 @@ public class GitlabIssueSourceServiceImpl implements IssueSourceService {
 
     @Override
     public void upload(IssueTables table) {
-        //todo implement later
         //https://docs.gitlab.com/api/graphql/
         //https://gitlab.com/gitlab-org/gitlab-development-kit/-/issues/1822
     }
