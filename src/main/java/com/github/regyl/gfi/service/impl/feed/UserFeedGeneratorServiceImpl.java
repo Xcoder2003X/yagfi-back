@@ -13,6 +13,7 @@ import com.github.regyl.gfi.util.ResourceUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.hc.core5.http.HttpHost;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.graphql.client.ClientGraphQlResponse;
 import org.springframework.graphql.client.GraphQlClient;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -31,6 +32,7 @@ import java.util.function.BiConsumer;
 @Slf4j
 @Component
 @RequiredArgsConstructor
+@ConditionalOnProperty(value = "spring.properties.feed-generation.enabled", havingValue = "true")
 public class UserFeedGeneratorServiceImpl implements ScheduledService {
 
     private static final String QUERY = ResourceUtil.getFilePayload("graphql/github-user-repos-request.graphql");

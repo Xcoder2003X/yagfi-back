@@ -77,11 +77,11 @@ public class CycloneDxServiceImpl implements CycloneDxService {
                     return null;
                 }
             } catch (SocketTimeoutException e) {
+                //info because timeout exceptions will be a common case (cdxgen is a single-thread service)
                 log.info("Host {} is busy", host);
                 return null;
             } catch (Exception e) {
-                //info because timeout exceptions will be a common case (cdxgen is a single-thread service)
-                log.info("Error while getting CycloneDX service statuses: {}", e.getMessage());
+                log.warn("Error while getting CycloneDX service status: {}", e.getMessage());
                 return null;
             }
         }).filter(Objects::nonNull).toList();
