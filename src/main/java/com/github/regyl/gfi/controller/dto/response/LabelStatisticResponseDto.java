@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LabelStatisticResponseDto {
-    private String label;        // "good-first-iss"
-    private Long count;          // 156
+    private String label;        // "good-first-issue"
+    private Long count;         
 }

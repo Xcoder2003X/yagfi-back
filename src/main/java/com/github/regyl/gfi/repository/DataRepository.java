@@ -17,6 +17,5 @@ public interface DataRepository {
 
     String findRandomIssueLink(DataRequestDto filters);
 
-    // ← new!
-    List<LabelStatisticResponseDto> findAllLabels();  // extract all labels
+    List<LabelStatisticResponseDto> findAllLabels();  
 }

@@ -85,10 +85,9 @@ public class DataServiceImpl implements DataService {
     }
   
 
-  // new method
     @Override
-@Cacheable(cacheNames = "labels")  //  Cache
-public List<LabelStatisticResponseDto> findAllLabels() {
-    return dataRepository.findAllLabels();
+    @Cacheable(cacheNames = "labels")  
+    public List<LabelStatisticResponseDto> findAllLabels() {
+        return dataRepository.findAllLabels();
 }
 }

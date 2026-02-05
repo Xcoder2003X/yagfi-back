@@ -3,14 +3,11 @@ package com.github.regyl.gfi.controller;
 import com.github.regyl.gfi.controller.dto.request.DataRequestDto;
 import com.github.regyl.gfi.controller.dto.request.UserFeedRequestDto;
 import com.github.regyl.gfi.controller.dto.response.DataResponseDto;
-<<<<<<< HEAD
 import com.github.regyl.gfi.controller.dto.response.LabelStatisticResponseDto;
 import com.github.regyl.gfi.service.DataService;
-=======
 import com.github.regyl.gfi.entity.UserFeedRequestEntity;
 import com.github.regyl.gfi.service.other.DataService;
 import com.github.regyl.gfi.service.other.UserFeedService;
->>>>>>> master
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -48,9 +45,8 @@ public class DataController {
         return dataService.findAllLanguages();
     }
 
-    // new endpoint for label statistics
     @GetMapping("/labels")
-public List<LabelStatisticResponseDto> findAllLabels() {
+    public List<LabelStatisticResponseDto> findAllLabels() {
     return dataService.findAllLabels();
 }
     @GetMapping("/feed")
