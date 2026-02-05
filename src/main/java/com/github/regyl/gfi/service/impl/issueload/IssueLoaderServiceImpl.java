@@ -21,7 +21,7 @@ import java.util.concurrent.locks.LockSupport;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-@ConditionalOnProperty(value = "spring.properties.auto-upload.enabled", havingValue = "true")
+@ConditionalOnProperty(value = "spring.properties.feature-enabled.auto-upload", havingValue = "true")
 public class IssueLoaderServiceImpl implements ScheduledService {
 
     @Qualifier("issueLoadAsyncExecutor")

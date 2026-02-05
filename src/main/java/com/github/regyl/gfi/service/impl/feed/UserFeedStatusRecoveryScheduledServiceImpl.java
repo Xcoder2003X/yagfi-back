@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-@ConditionalOnProperty(value = "spring.properties.feed-generation.enabled", havingValue = "true")
+@ConditionalOnProperty(value = "spring.properties.feature-enabled.feed-generation", havingValue = "true")
 public class UserFeedStatusRecoveryScheduledServiceImpl implements ApplicationListener<ApplicationStartedEvent> {
 
     private final UserFeedRequestRepository repository;

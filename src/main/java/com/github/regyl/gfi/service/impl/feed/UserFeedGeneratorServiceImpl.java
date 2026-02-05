@@ -31,7 +31,7 @@ import java.util.function.BiConsumer;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-@ConditionalOnProperty(value = "spring.properties.feed-generation.enabled", havingValue = "true")
+@ConditionalOnProperty(value = "spring.properties.feature-enabled.feed-generation", havingValue = "true")
 public class UserFeedGeneratorServiceImpl implements ScheduledService {
 
     private static final String QUERY = ResourceUtil.getFilePayload("graphql/github-user-repos-request.graphql");
