@@ -84,10 +84,9 @@ public class DataServiceImpl implements DataService {
         return dataRepository.findRandomIssueLink(filters);
     }
   
-
     @Override
     @Cacheable(cacheNames = "labels")  
     public List<LabelStatisticResponseDto> findAllLabels() {
         return dataRepository.findAllLabels();
-}
+    }
 }

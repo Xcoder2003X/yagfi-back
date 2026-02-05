@@ -4,8 +4,8 @@ import com.github.regyl.gfi.controller.dto.request.DataRequestDto;
 import com.github.regyl.gfi.controller.dto.request.UserFeedRequestDto;
 import com.github.regyl.gfi.controller.dto.response.DataResponseDto;
 import com.github.regyl.gfi.controller.dto.response.LabelStatisticResponseDto;
-import com.github.regyl.gfi.service.DataService;
 import com.github.regyl.gfi.entity.UserFeedRequestEntity;
+
 import com.github.regyl.gfi.service.other.DataService;
 import com.github.regyl.gfi.service.other.UserFeedService;
 import jakarta.validation.Valid;
@@ -47,8 +47,9 @@ public class DataController {
 
     @GetMapping("/labels")
     public List<LabelStatisticResponseDto> findAllLabels() {
-    return dataService.findAllLabels();
-}
+        return dataService.findAllLabels();
+    }
+    
     @GetMapping("/feed")
     public UserFeedRequestEntity findCustomFeedByNickname(
             @RequestParam("nickname") @NotEmpty String nickname,
