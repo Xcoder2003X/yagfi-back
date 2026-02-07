@@ -10,16 +10,7 @@
         <result property="created" column="created"/>
         <result property="label" column="label"/>
         <result property="issueCount" column="issue_count"/>
-        <result property="year" column="year"/>
     </resultMap>
-
-    <insert id="save">
-        INSERT INTO gfi.e_github_metadata (label, issue_count)
-        VALUES (#{entity.label}, #{entity.issueCount})
-        ON CONFLICT (label) DO UPDATE SET
-            issue_count = EXCLUDED.issue_count,
-            created = NOW()
-    </insert>
 
     <insert id="saveAll">
         INSERT INTO gfi.e_github_metadata (label, issue_count)
@@ -32,14 +23,15 @@
             created = NOW()
     </insert>
 
-    <select id="findAll" resultMap="GitHubMetadataEntityResultMap">
+    <select id="findByLabel" resultMap="GitHubMetadataEntityResultMap">
         SELECT
             id,
             created,
             label,
             issue_count
         FROM gfi.e_github_metadata
-        ORDER BY issue_count DESC
+        WHERE label = #{label}
+        LIMIT 1
     </select>
 
 </mapper>

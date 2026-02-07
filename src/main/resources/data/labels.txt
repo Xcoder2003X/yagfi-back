@@ -1,12 +1,9 @@
 beginner
 beginner friendly
 beginner-friendly
-bite-sized
-co.help-wanted
 code quality
 contribution
 contribution welcome
-difficulty::easy
 difficulty:easy
 doc
 documentation
@@ -18,7 +15,6 @@ Easy hack
 easy task
 easy-fix
 easy-pick
-easy_to_fix
 effort/easy
 first contribution
 starter issue
@@ -42,16 +38,12 @@ low-hanging-fruit
 newbie
 newbie-friendly
 Newcomers
-please contribute
 Portfolio Addition
 scope:small
-Seeking Community Contributors
 starter-task
 Status: Up for grabs
-Type: Good first issue
 up for grabs
 up-for-grabs
-upforgrabs
 status: ideal-for-contribution
 help wanted
 help-wanted
