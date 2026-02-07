@@ -2,7 +2,7 @@ spring:
   properties:
     host-name: localhost
     feature-enabled:
-      auto-upload: true
+      auto-upload: false
       auto-upload-meta: false
       feed-generation: false
       request-logging: false

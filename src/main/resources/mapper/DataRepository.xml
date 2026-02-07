@@ -77,51 +77,65 @@
 
     <sql id="dataFilter">
         <where>
+        -- crunch to avoid excessive check for and necessary
+        1=1
             <if test="filter != null and filter.languages != null and filter.languages.values != null and filter.languages.values.size() > 0">
                 <choose>
                     <when test="filter.languages.operator != null and filter.languages.operator.name() == 'IN'">
-                        er.language IN
+                        and er.language IN
                         <foreach collection="filter.languages.values" item="language" open="(" separator="," close=")">
                             #{language}
                         </foreach>
                     </when>
                     <when test="filter.languages.operator != null and filter.languages.operator.name() == 'NOT_IN'">
-                        er.language NOT IN
+                        and er.language NOT IN
                         <foreach collection="filter.languages.values" item="language" open="(" separator="," close=")">
                             #{language}
                         </foreach>
                     </when>
                 </choose>
             </if>
+
             <if test="filter != null and filter.stars != null and filter.stars.value != null">
-                <if test="filter != null and filter.languages != null and filter.languages.values != null and filter.languages.values.size() > 0">
-                    AND
-                </if>
                 <choose>
                     <when test="filter.stars.operator != null and filter.stars.operator.name() == 'GREATER'">
-                        er.stars &gt; #{filter.stars.value}
+                        and er.stars &gt; #{filter.stars.value}
                     </when>
                     <when test="filter.stars.operator != null and filter.stars.operator.name() == 'LESS'">
-                        er.stars &lt; #{filter.stars.value}
+                        and er.stars &lt; #{filter.stars.value}
                     </when>
                 </choose>
             </if>
+
             <if test="filter != null and filter.licenses != null and filter.licenses.values != null and filter.licenses.values.size() > 0">
-                <if test="(filter.languages != null and filter.languages.values != null and filter.languages.values.size() > 0)
-                       or (filter.stars != null and filter.stars.value != null)">
-                    AND
-                </if>
                 <choose>
                     <when test="filter.licenses.operator != null and filter.licenses.operator.name() == 'IN'">
-                        er.license IN
+                        and er.license IN
                         <foreach collection="filter.licenses.values" item="license" open="(" separator="," close=")">
                             #{license}
                         </foreach>
                     </when>
                     <when test="filter.licenses.operator != null and filter.licenses.operator.name() == 'NOT_IN'">
-                        er.license NOT IN
+                        and er.license NOT IN
                         <foreach collection="filter.licenses.values" item="license" open="(" separator="," close=")">
                             #{license}
+                        </foreach>
+                    </when>
+                </choose>
+            </if>
+
+            <if test="filter != null and filter.issueLanguages != null and filter.issueLanguages.values != null and filter.issueLanguages.values.size() > 0">
+                <choose>
+                    <when test="filter.issueLanguages.operator != null and filter.issueLanguages.operator.name() == 'IN'">
+                        and ei.language IN
+                        <foreach collection="filter.issueLanguages.values" item="language" open="(" separator="," close=")">
+                            #{language}
+                        </foreach>
+                    </when>
+                    <when test="filter.issueLanguages.operator != null and filter.issueLanguages.operator.name() == 'NOT_IN'">
+                        and ei.language NOT IN
+                        <foreach collection="filter.issueLanguages.values" item="language" open="(" separator="," close=")">
+                            #{language}
                         </foreach>
                     </when>
                 </choose>

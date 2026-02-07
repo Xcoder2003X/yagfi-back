@@ -1,13 +1,11 @@
 package com.github.regyl.gfi.controller.dto.request;
 
 import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Collection;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -21,5 +19,4 @@ public class DataRequestDto {
     private FilterRequestDto filter;
 
     private Collection<OrderDto> orders;
-    private List<String> languages;
 }

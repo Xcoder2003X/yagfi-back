@@ -12,4 +12,5 @@ public class FilterRequestDto {
     private LanguageFilterDto languages;
     private StarsFilterDto stars;
     private LicenseFilterDto licenses;
+    private LanguageFilterDto issueLanguages;
 }
