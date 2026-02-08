@@ -4,8 +4,8 @@ spring:
     feature-enabled:
       auto-upload: false
       auto-upload-meta: false
-      feed-generation: false
-      request-logging: false
+      feed-generation: true
+      request-logging: true
     email:
       username: ${EMAIL_USERNAME:test}
       password: ${EMAIL_PASSWORD:test}
