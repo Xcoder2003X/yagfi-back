@@ -41,14 +41,7 @@ public class DataController {
     public List<LabelStatisticResponseDto> findAllLabels() {
         return dataService.findAllLabels();
     }
-    
-    @GetMapping("/feed")
-    public UserFeedRequestEntity findCustomFeedByNickname(
-            @RequestParam("nickname") @NotEmpty String nickname,
-            @RequestParam("email") @Email String email
-    ) {
-        return userFeedService.saveFeedRequest(new UserFeedRequestDto(nickname, email));
-    }
+
     @GetMapping("/issue-languages")
     public Collection<String> findAllIssueLanguages() {
         return dataService.findAllIssueLanguages();
