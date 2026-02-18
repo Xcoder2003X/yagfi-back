@@ -4,6 +4,8 @@ import com.github.regyl.gfi.annotation.DefaultIntegrationTest;
 import com.github.regyl.gfi.controller.dto.request.issue.DataRequestDto;
 import com.github.regyl.gfi.controller.dto.response.issue.IssueResponseDto;
 import com.github.regyl.gfi.repository.DataRepository;
+import com.github.regyl.gfi.controller.dto.response.statistic.LabelStatisticResponseDto;
+import com.github.regyl.gfi.controller.dto.response.statistic.LabelStatisticResponseDto;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,12 @@ import org.testcontainers.postgresql.PostgreSQLContainer;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.List;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -105,13 +113,13 @@ class DataRepositoryTest {
         void testReturnsIssuesWithNoFilters() {
             long repoId1 = insertRepositoryWithDetails("repo1", "Java", "MIT", 100);
             long repoId2 = insertRepositoryWithDetails("repo2", "Python", "Apache-2.0", 200);
-            
+
             insertIssue("issue1", "First Issue", repoId1, new String[]{"bug", "good-first-issue"}, "Java");
             insertIssue("issue2", "Second Issue", repoId2, new String[]{"enhancement"}, "Python");
-            
+
             DataRequestDto request = new DataRequestDto();
             List<IssueResponseDto> issues = dataRepository.findAllIssues(request);
-            
+
             assertThat(issues).hasSize(2);
         }
 
@@ -119,8 +127,46 @@ class DataRepositoryTest {
         void testEmptyWhenNoData() {
             DataRequestDto request = new DataRequestDto();
             List<IssueResponseDto> issues = dataRepository.findAllIssues(request);
-            
+
             assertThat(issues).isEmpty();
+        }
+    }
+
+    @Nested
+    class FindAllLabelsTest {
+
+        @Test
+        void testFindAllLabelsWhenNoData() {
+            List<LabelStatisticResponseDto> labels = dataRepository.findAllLabels();
+
+            assertThat(labels).isEmpty();
+        }
+
+        @Test
+        void testFindAllLabels() {
+            long repoId1 = insertRepositoryWithDetails("repo1", "Java", "MIT", 100);
+            long repoId2 = insertRepositoryWithDetails("repo2", "Python", "Apache-2.0", 200);
+
+            insertIssue("issue1", "First Issue", repoId1, new String[]{"Label1", "Label2"}, "Java");
+            insertIssue("issue2", "Second Issue", repoId1, new String[]{"Label1"}, "Python");
+            insertIssue("issue3", "Third Issue", repoId1, new String[]{"Label1"}, "Python");
+            insertIssue("issue4", "Fourth Issue", repoId2, new String[]{"Label1"}, "Python");
+            insertIssue("issue5", "Fifth Issue", repoId2, new String[]{"Label2"}, "Python");
+
+            List<LabelStatisticResponseDto> labels = dataRepository.findAllLabels();
+
+            Map<String, Long> result =
+                    labels.stream()
+                            .collect(Collectors.toMap(
+                                    LabelStatisticResponseDto::getLabel,
+                                    LabelStatisticResponseDto::getCount
+                            ));
+
+
+            assertThat(result)
+                    .hasSize(2)
+                    .containsEntry("Label1", 4L)
+                    .containsEntry("Label2", 2L);
         }
     }
 
