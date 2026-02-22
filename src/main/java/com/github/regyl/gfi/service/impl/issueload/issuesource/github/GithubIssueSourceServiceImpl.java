@@ -18,6 +18,7 @@ import java.util.Collection;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -29,10 +30,11 @@ public class GithubIssueSourceServiceImpl implements IssueSourceService {
     private final RunnableManagerService runnableManagerService;
     private final ApplicationEventPublisher eventPublisher;
     private final GithubQueryBuilderService queryBuilderService;
+    private final Supplier<OffsetDateTime> dateTimeSupplier;
 
     @Override
     public void raiseUploadEvent() {
-        eventPublisher.publishEvent(new IssueSyncCompletedEvent(IssueSources.GITHUB, OffsetDateTime.now()));
+        eventPublisher.publishEvent(new IssueSyncCompletedEvent(IssueSources.GITHUB, dateTimeSupplier.get()));
         log.info("All github issues synced successfully");
     }
 

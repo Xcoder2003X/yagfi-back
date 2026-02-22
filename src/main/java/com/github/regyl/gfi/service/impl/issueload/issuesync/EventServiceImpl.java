@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 @Component
 @RequiredArgsConstructor
@@ -19,13 +20,14 @@ public class EventServiceImpl implements EventService {
 
     private final EventRepository eventRepository;
     private final Function<EventEntity, EventResponseDto> mapper;
+    private final Supplier<OffsetDateTime> dateTimeSupplier;
 
     @Override
     public void updateLastSyncTime(IssueSources source, OffsetDateTime syncTime) {
         EventEntity newEvent = EventEntity.builder()
                 .source(source.getName())
                 .lastUpdateDttm(syncTime)
-                .created(OffsetDateTime.now())
+                .created(dateTimeSupplier.get())
                 .build();
         eventRepository.insert(newEvent);
     }

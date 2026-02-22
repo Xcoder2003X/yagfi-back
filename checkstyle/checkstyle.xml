@@ -18,7 +18,7 @@
 
 <module name="Checker">
     <module name="RegexpSingleline">
-        <property name="format" value="//(FIXME REMOVE ME|REMOVE ME|REMOVEME|FIXME REMOVEME)"/>
+        <property name="format" value="//(FIXME|REMOVE ME|REMOVEME)"/>
         <property name="message" value="Remove this line"/>
     </module>
     <module name="RegexpSingleline">
@@ -32,6 +32,10 @@
     <module name="RegexpSingleline">
         <property name="format" value="org.junit.jupiter.api.Assertions"/>
         <property name="message" value="JUnit assertions are forbidden. Please use AssertJ"/>
+    </module>
+    <module name="RegexpSingleline">
+        <property name="format" value="\.now\(\)"/>
+        <property name="message" value="Calling DateTime.now() is forbidden. Use supplier"/>
     </module>
 
     <module name="SuppressWarningsFilter"/>

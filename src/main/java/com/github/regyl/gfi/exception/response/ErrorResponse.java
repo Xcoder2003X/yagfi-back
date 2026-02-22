@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.Map;
 
 @Data
@@ -16,6 +16,6 @@ public class ErrorResponse {
     private String path;
     private String error;
     private String message;
-    private LocalDateTime timestamp;
+    private OffsetDateTime timestamp;
     private Map<String, String> details;
 }

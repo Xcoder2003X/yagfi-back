@@ -13,6 +13,7 @@ import java.time.OffsetDateTime;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 
 @Slf4j
 @Component
@@ -20,6 +21,7 @@ import java.util.concurrent.CompletableFuture;
 public class GitlabIssueSourceServiceImpl implements IssueSourceService {
 
     private final ApplicationEventPublisher eventPublisher;
+    private final Supplier<OffsetDateTime> dateTimeSupplier;
 
     @Override
     public Collection<CompletableFuture<Void>> upload(IssueTables table) {
@@ -30,7 +32,7 @@ public class GitlabIssueSourceServiceImpl implements IssueSourceService {
 
     @Override
     public void raiseUploadEvent() {
-        eventPublisher.publishEvent(new IssueSyncCompletedEvent(IssueSources.GITLAB, OffsetDateTime.now()));
+        eventPublisher.publishEvent(new IssueSyncCompletedEvent(IssueSources.GITLAB, dateTimeSupplier.get()));
         log.info("All gitlab issues synced successfully");
     }
 }

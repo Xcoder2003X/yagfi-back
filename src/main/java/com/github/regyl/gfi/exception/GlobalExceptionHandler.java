@@ -1,6 +1,7 @@
 package com.github.regyl.gfi.exception;
 
 import com.github.regyl.gfi.exception.response.ErrorResponse;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -8,12 +9,15 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.util.function.Supplier;
 
 @Slf4j
 @RestControllerAdvice
+@RequiredArgsConstructor
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
+    private final Supplier<OffsetDateTime> dateTimeSupplier;
 
     @ExceptionHandler(EventNotFoundException.class)
     public ErrorResponse handleEventNotFoundException(EventNotFoundException e) {
@@ -29,7 +33,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     private ErrorResponse buildResponse(HttpStatus status, String message) {
         return ErrorResponse.builder()
-                .timestamp(LocalDateTime.now())
+                .timestamp(dateTimeSupplier.get())
                 .status(status.value())
                 .error(status.getReasonPhrase())
                 .message(message)
