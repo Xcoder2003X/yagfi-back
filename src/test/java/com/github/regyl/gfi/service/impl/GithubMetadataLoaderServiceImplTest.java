@@ -1,12 +1,5 @@
 package com.github.regyl.gfi.service.impl;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
-import java.util.function.Supplier;
-
-import static org.mockito.Mockito.when;
-
 import com.github.regyl.gfi.annotation.DefaultUnitTest;
 import com.github.regyl.gfi.model.MetadataRequestModel;
 import com.github.regyl.gfi.repository.GitHubMetadataRepository;
@@ -16,6 +9,13 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.function.Supplier;
+
+import static org.mockito.Mockito.when;
 
 @DefaultUnitTest
 class GithubMetadataLoaderServiceImplTest {

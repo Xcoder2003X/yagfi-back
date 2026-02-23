@@ -1,11 +1,5 @@
 package com.github.regyl.gfi.service.impl;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.concurrent.CountDownLatch;
-import java.util.function.Supplier;
-
 import com.github.regyl.gfi.entity.GitHubMetadataEntity;
 import com.github.regyl.gfi.model.LabelModel;
 import com.github.regyl.gfi.model.MetadataRequestModel;
@@ -20,6 +14,13 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.concurrent.CountDownLatch;
+import java.util.function.Supplier;
+
 
 @Slf4j
 @Component
